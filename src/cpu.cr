@@ -26,6 +26,11 @@ class Cr6502::CPU
   include Cr6502::Opcodes::ROR
   include Cr6502::Opcodes::RTI
   include Cr6502::Opcodes::RTS
+  include Cr6502::Opcodes::SBC
+  include Cr6502::Opcodes::STA
+  include Cr6502::Opcodes::STK
+  include Cr6502::Opcodes::STX
+  include Cr6502::Opcodes::STY
 
   macro puk
     {% def_modules = @type.ancestors.select { |a| a.annotation(Cr6502::A::DefinitionModule) } %}

@@ -39,12 +39,12 @@ module Cr6502::Opcodes::STA
   end
 
   @[OpCode(
-    h: 0xE1, m: "indirectx", len: 2, cycles: 6)]
+    h: 0x81, m: "indirectx", len: 2, cycles: 6)]
   def sta_indirectx: Nil
   end
 
   @[OpCode(
-    h: 0xF1, m: "indirecty", len: 2, cycles: 6)]
+    h: 0x91, m: "indirecty", len: 2, cycles: 6)]
   def sta_indirecty: Nil
   end
 end
