@@ -7,5 +7,8 @@ module Cr6502
   # TODO: Put your code here
 end
 
-Cr6502::CPU.new.exec(0x69)
+
+Cr6502::CPU.puk
+# Cr6502::CPU.new.exec(0x69)
+
  

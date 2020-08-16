@@ -1,7 +1,8 @@
-@[Cr6502::A::DefinitionModule(code: "adc")]
+@[Cr6502::A::DefinitionModule]
 module Cr6502::Opcodes::ADC
   include Cr6502::A
 
+  # ADC (ADd with Carry)
   # Affects Flags: N V Z C
   # MODE           SYNTAX       HEX LEN TIM
   # Immediate     ADC #$44      $69  2   2
@@ -14,23 +15,43 @@ module Cr6502::Opcodes::ADC
   # Indirect,Y    ADC ($44),Y   $71  2   5+
   # + add 1 cycle if page boundary crossed
 
-  @[OpCode(h: 0x69, m: "immidiate", len: 2, cycles: 2)]
-  def adc_immidiate
+  @[OpCode(
+    h: 0x69, m: "immidiate", len: 2, cycles: 2)]
+  def adc_immidiate : Nil
   end
 
-  @[OpCode(h: 0x65, m: "zeropage", len: 2, cycles: 3)]
-  def adc_zeropage
+  @[OpCode(
+    h: 0x65, m: "zeropage", len: 2, cycles: 3)]
+  def adc_zeropage : Nil
   end
 
-  @[OpCode(h: 0x75, m: "zeropagex", len: 2, cycles: 4)]
-  def adc_zeropagex
+  @[OpCode(
+    h: 0x75, m: "zeropagex", len: 2, cycles: 4)]
+  def adc_zeropagex : Nil
   end
 
-  @[OpCode(h: 0x6D, m: "absolute", len: 3, cycles: 4)]
-  def adc_absolute
+  @[OpCode(
+    h: 0x6D, m: "absolute", len: 3, cycles: 4)]
+  def adc_absolute : Nil
   end
 
-  @[OpCode(h: 0x7D, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def adc_absolutex
+  @[OpCode(
+    h: 0x7D, m: "absolutex", len: 3, cycles: 4, ex: 1)]
+  def adc_absolutex : Nil
+  end
+
+  @[OpCode(
+    h: 0x79, m: "absolutey", len: 3, cycles: 4, ex: 1)]
+  def adc_absolutey : Nil
+  end
+
+  @[OpCode(
+    h: 0x61, m: "indirectx", len: 2, cycles: 6, ex: 1)]
+  def adc_indirectx : Nil
+  end
+
+  @[OpCode(
+    h: 0x71, m: "indirecty", len: 2, cycles: 5, ex: 1)]
+  def adc_indirecty : Nil
   end
 end
