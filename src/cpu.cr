@@ -70,7 +70,15 @@ class Cr6502::CPU
           {% for def_met in def_mod.methods.select { |m| m.annotation(Cr6502::A::OpCode) } %}
             {% met_a = def_met.annotation(Cr6502::A::OpCode) %}
             when {{ met_a[:h] }}
-              puts "[#{@pc.to_s(16)}] #{ {{ def_met.name.stringify }} }"
+              args = begin
+                %a = [] of UInt8
+                {% for i in 0..(met_a[:len] - 1) %}
+                  %a << @memory[@pc + {{ i }}]
+                {% end %}
+                %a
+              end
+
+              puts "[#{@pc.to_s(16)}] #{ {{ def_met.name.stringify }} }, #{args}"
               
               @pc += {{ met_a[:len] }}
           {% end %}
