@@ -9,7 +9,7 @@ module Cr6502::Opcodes::JSR
   # JSR pushes the address-1 of the next operation on to the stack before transferring program control to the following address. Subroutines are normally terminated by a RTS op code.
   
   @[OpCode(
-    h: 0x20, m: "absolute", len: 3, cycles: 6)]
+    h: 0x20, m: "absolute", len: 3, cycles: 6, jump: true)]
   def jsr_absolute : Nil
   end
 end

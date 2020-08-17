@@ -10,12 +10,12 @@ module Cr6502::Opcodes::JMP
   # Indirect      JMP ($5597)   $6C  3   5
 
   @[OpCode(
-    h: 0x4C, m: "absolute", len: 3, cycles: 3)]
+    h: 0x4C, m: "absolute", len: 3, cycles: 3, jump: true)]
   def jmp_absolute : Nil
   end
 
   @[OpCode(
-    h: 0x6C, m: "indirect", len: 3, cycles: 5)]
+    h: 0x6C, m: "indirect", len: 3, cycles: 5, jump: true)]
   def jmp_indirect : Nil
   end
 end

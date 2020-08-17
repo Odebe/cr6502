@@ -1,5 +1,5 @@
 @[Cr6502::A::DefinitionModule]
-module Cr6502::Opcodes::B
+module Cr6502::Opcodes::Branch
   include Cr6502::A
 
   # Branch Instructions
@@ -18,42 +18,42 @@ module Cr6502::Opcodes::B
   # A branch not taken requires two machine cycles. Add one if the branch is taken and add one more if the branch crosses a page boundary.
   
   @[OpCode(
-    h: 0x10, m: "relative", len: 2, cycles: 1)]
+    h: 0x10, m: "relative", len: 2, cycles: 1, branch: true)]
   def bpl : Nil
   end
 
   @[OpCode(
-    h: 0x30, m: "relative", len: 2, cycles: 1)]
+    h: 0x30, m: "relative", len: 2, cycles: 1, branch: true)]
   def bmi : Nil
   end
 
   @[OpCode(
-    h: 0x50, m: "relative", len: 2, cycles: 1)]
+    h: 0x50, m: "relative", len: 2, cycles: 1, branch: true)]
   def bvc : Nil
   end
 
   @[OpCode(
-    h: 0x70, m: "relative", len: 2, cycles: 1)]
+    h: 0x70, m: "relative", len: 2, cycles: 1, branch: true)]
   def bvs : Nil
   end
 
   @[OpCode(
-    h: 0x90, m: "relative", len: 2, cycles: 1)]
+    h: 0x90, m: "relative", len: 2, cycles: 1, branch: true)]
   def bcc : Nil
   end
 
   @[OpCode(
-    h: 0xB0, m: "relative", len: 2, cycles: 1)]
+    h: 0xB0, m: "relative", len: 2, cycles: 1, branch: true)]
   def bcs : Nil
   end
 
   @[OpCode(
-    h: 0xD0, m: "relative", len: 2, cycles: 1)]
+    h: 0xD0, m: "relative", len: 2, cycles: 1, branch: true)]
   def bne : Nil
   end
 
   @[OpCode(
-    h: 0xF0, m: "relative", len: 2, cycles: 1)]
+    h: 0xF0, m: "relative", len: 2, cycles: 1, branch: true)]
   def beq : Nil
   end
 end

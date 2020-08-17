@@ -31,8 +31,37 @@ class Cr6502::CPU
   include Cr6502::Opcodes::STK
   include Cr6502::Opcodes::STX
   include Cr6502::Opcodes::STY
+  include Cr6502::Opcodes::Branch
 
-  macro puk
+
+
+  def initialize(@memory : Array(UInt8), @start : UInt16)
+    @pc = @start
+  end
+
+  def running?
+    @memory[@pc + 1]?
+  end
+
+  def cycle!
+    opcode = read_opcode
+    exec opcode
+  end
+
+  macro read_opcode
+    @memory[@pc]
+  end
+
+  macro read_arg(num)
+    {% len = @def.annotation(Cr6502::A::OpCode)[:len] %}
+    {% if len == nil || num <= 0 || num > len %}
+      {% raise "Opcode has no arguments or wrong argument num" %}
+    {% else %}
+       @memory[@pc + {{ len }}]
+    {% end %}
+  end
+
+  macro finished
     {% def_modules = @type.ancestors.select { |a| a.annotation(Cr6502::A::DefinitionModule) } %}
     def exec(opcode)
       case opcode
@@ -41,10 +70,15 @@ class Cr6502::CPU
           {% for def_met in def_mod.methods.select { |m| m.annotation(Cr6502::A::OpCode) } %}
             {% met_a = def_met.annotation(Cr6502::A::OpCode) %}
             when {{ met_a[:h] }}
-              {{ def_met.name }}
+              puts "[#{@pc.to_s(16)}] #{ {{ def_met.name.stringify }} }"
+              
+              @pc += {{ met_a[:len] }}
           {% end %}
         {% end %}
       {% end %}
+      else
+        puts "[#{@pc.to_s(16)}] ignoring #{opcode.to_s(16)}"
+        @pc += 1
       end
     end
   end
