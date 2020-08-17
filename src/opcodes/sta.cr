@@ -15,37 +15,37 @@ module Cr6502::Opcodes::STA
 
   @[OpCode(
     h: 0x85, m: "zeropage", len: 2, cycles: 3)]
-  def sta_zeropage : Nil
+  def sta_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x95, m: "zeropagex", len: 2, cycles: 4)]
-  def sta_zeropagex : Nil
+  def sta_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x8D, m: "absolute", len: 3, cycles: 4)]
-  def sta_absolute : Nil
+  def sta_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x9D, m: "absolutex", len: 3, cycles: 5)]
-  def sta_absolutex : Nil
+  def sta_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x99, m: "absolutey", len: 3, cycles: 5)]
-  def sta_absolutey: Nil
+  def sta_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0x81, m: "indirectx", len: 2, cycles: 6)]
-  def sta_indirectx: Nil
+  def sta_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0x91, m: "indirecty", len: 2, cycles: 6)]
-  def sta_indirecty: Nil
+  def sta_indirecty(arg) : Nil
   end
 end
 

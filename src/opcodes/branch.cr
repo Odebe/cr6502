@@ -19,41 +19,41 @@ module Cr6502::Opcodes::Branch
   
   @[OpCode(
     h: 0x10, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bpl : Nil
+  def bpl(arg) : Nil
   end
 
   @[OpCode(
     h: 0x30, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bmi : Nil
+  def bmi(arg) : Nil
   end
 
   @[OpCode(
     h: 0x50, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bvc : Nil
+  def bvc(arg) : Nil
   end
 
   @[OpCode(
     h: 0x70, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bvs : Nil
+  def bvs(arg) : Nil
   end
 
   @[OpCode(
     h: 0x90, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bcc : Nil
+  def bcc(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB0, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bcs : Nil
+  def bcs(arg) : Nil
   end
 
   @[OpCode(
     h: 0xD0, m: "relative", len: 2, cycles: 1, branch: true)]
-  def bne : Nil
+  def bne(arg) : Nil
   end
 
   @[OpCode(
     h: 0xF0, m: "relative", len: 2, cycles: 1, branch: true)]
-  def beq : Nil
+  def beq(arg) : Nil
   end
 end

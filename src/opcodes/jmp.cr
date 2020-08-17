@@ -11,11 +11,11 @@ module Cr6502::Opcodes::JMP
 
   @[OpCode(
     h: 0x4C, m: "absolute", len: 3, cycles: 3, jump: true)]
-  def jmp_absolute : Nil
+  def jmp_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x6C, m: "indirect", len: 3, cycles: 5, jump: true)]
-  def jmp_indirect : Nil
+  def jmp_indirect(arg) : Nil
   end
 end

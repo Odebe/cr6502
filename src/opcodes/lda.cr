@@ -17,41 +17,41 @@ module Cr6502::Opcodes::LDA
 
   @[OpCode(
     h: 0xA9, m: "immidiate", len: 2, cycles: 2)]
-  def lda_immidiate : Nil
+  def lda_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xA5, m: "zeropage", len: 2, cycles: 3)]
-  def lda_zeropage : Nil
+  def lda_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB5, m: "zeropagex", len: 2, cycles: 4)]
-  def lda_zeropagex : Nil
+  def lda_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xAD, m: "absolute", len: 3, cycles: 4)]
-  def lda_absolute : Nil
+  def lda_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xDB, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def lda_absolutex : Nil
+  def lda_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB9, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def lda_absolutey: Nil
+  def lda_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0xA1, m: "indirectx", len: 2, cycles: 6)]
-  def lda_indirectx: Nil
+  def lda_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB1, m: "indirecty", len: 2, cycles: 5, ex: 1)]
-  def lda_indirecty: Nil
+  def lda_indirecty(arg) : Nil
   end
 end

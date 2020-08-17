@@ -20,7 +20,7 @@ module Cr6502::Opcodes::STK
 
   @[OpCode(
     h: 0xBA, m: "implied ", len: 1, cycles: 2)]
-  def tsx_implied  : Nil
+  def tsx_implied : Nil
   end
 
   @[OpCode(

@@ -13,21 +13,21 @@ module Cr6502::Opcodes::DEC
 
   @[OpCode(
     h: 0xC6, m: "zeropage", len: 2, cycles: 5)]
-  def dec_zeropage : Nil
+  def dec_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xD6, m: "zeropagex", len: 2, cycles: 6)]
-  def dec_zeropagex : Nil
+  def dec_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xCE, m: "absolute", len: 3, cycles: 6)]
-  def dec_absolute : Nil
+  def dec_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xDE, m: "absolutex", len: 3, cycles: 7)]
-  def dec_absolutex : Nil
+  def dec_absolutex(arg) : Nil
   end
 end

@@ -16,41 +16,41 @@ module Cr6502::Opcodes::CMP
 
   @[OpCode(
     h: 0xC9, m: "immediate", len: 2, cycles: 2)]
-  def cmp_immediate : Nil
+  def cmp_immediate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xC5, m: "zeropage", len: 2, cycles: 3)]
-  def cmp_zeropage : Nil
+  def cmp_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xD5, m: "zeropagex", len: 2, cycles: 4)]
-  def cmp_zeropagex : Nil
+  def cmp_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xCD, m: "absolute", len: 3, cycles: 4)]
-  def cmp_absolute : Nil
+  def cmp_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xDD, m: "absolutex", len: 2, cycles: 4, ext: 1)]
-  def cmp_absolutex : Nil
+  def cmp_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xD9, m: "absolutey", len: 3, cycles: 4, ext: 1)]
-  def cmp_absolutey : Nil
+  def cmp_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0xC1, m: "indirectx", len: 2, cycles: 6)]
-  def cmp_indirectx : Nil
+  def cmp_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0xD1, m: "indirecty", len: 2, cycles: 5, ext: 1)]
-  def cmp_indirecty : Nil
+  def cmp_indirecty(arg) : Nil
   end
 end

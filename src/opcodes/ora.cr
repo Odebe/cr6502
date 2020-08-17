@@ -17,41 +17,41 @@ module Cr6502::Opcodes::ORA
 
   @[OpCode(
     h: 0x09, m: "immidiate", len: 2, cycles: 2)]
-  def ora_immidiate : Nil
+  def ora_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0x05, m: "zeropage", len: 2, cycles: 3)]
-  def ora_zeropage : Nil
+  def ora_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x15, m: "zeropagex", len: 2, cycles: 4)]
-  def ora_zeropagex : Nil
+  def ora_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x0D, m: "absolute", len: 3, cycles: 4)]
-  def ora_absolute : Nil
+  def ora_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x1D, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def ora_absolutex : Nil
+  def ora_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x19, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def ora_absolutey : Nil
+  def ora_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0x01, m: "indirectx", len: 2, cycles: 6)]
-  def ora_indirectx : Nil
+  def ora_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0x11, m: "indirecty", len: 2, cycles: 5, ex: 1)]
-  def ora_indirecty : Nil
+  def ora_indirecty(arg) : Nil
   end
 end

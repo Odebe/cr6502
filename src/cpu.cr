@@ -52,15 +52,6 @@ class Cr6502::CPU
     @memory[@pc]
   end
 
-  macro read_arg(num)
-    {% len = @def.annotation(Cr6502::A::OpCode)[:len] %}
-    {% if len == nil || num <= 0 || num > len %}
-      {% raise "Opcode has no arguments or wrong argument num" %}
-    {% else %}
-       @memory[@pc + {{ len }}]
-    {% end %}
-  end
-
   macro finished
     {% def_modules = @type.ancestors.select { |a| a.annotation(Cr6502::A::DefinitionModule) } %}
     def exec(opcode)
@@ -70,16 +61,20 @@ class Cr6502::CPU
           {% for def_met in def_mod.methods.select { |m| m.annotation(Cr6502::A::OpCode) } %}
             {% met_a = def_met.annotation(Cr6502::A::OpCode) %}
             when {{ met_a[:h] }}
-              args = begin
-                %a = [] of UInt8
-                {% for i in 0..(met_a[:len] - 1) %}
-                  %a << @memory[@pc + {{ i }}]
+              arg = begin
+                {% if met_a[:len] == 2 %}
+                  @memory[@pc + 1]
+                {% elsif met_a[:len] == 3 %}
+                  (@memory[@pc + 1].to_u16 << 8) | @memory[@pc + 2]
                 {% end %}
-                %a
               end
-
-              puts "[#{@pc.to_s(16)}] #{ {{ def_met.name.stringify }} }, #{args}"
               
+              {% if met_a[:len] > 1 %}
+                {{ def_met.name.id }}(arg)
+              {% else %}
+                {{ def_met.name.id }}
+              {% end %}
+
               @pc += {{ met_a[:len] }}
           {% end %}
         {% end %}

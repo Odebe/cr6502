@@ -15,26 +15,26 @@ module Cr6502::Opcodes::LDY
 
   @[OpCode(
     h: 0xA0, m: "immidiate", len: 2, cycles: 2)]
-  def ldy_immidiate : Nil
+  def ldy_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xA4, m: "zeropage", len: 2, cycles: 3)]
-  def ldy_zeropage : Nil
+  def ldy_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB4, m: "zeropagex", len: 2, cycles: 4)]
-  def ldy_zeropagex : Nil
+  def ldy_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xAc, m: "absolute", len: 3, cycles: 4)]
-  def ldy_absolute : Nil
+  def ldy_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xBC, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def ldy_absolutex : Nil
+  def ldy_absolutex(arg) : Nil
   end
 end

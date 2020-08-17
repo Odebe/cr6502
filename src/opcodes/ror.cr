@@ -19,21 +19,21 @@ module Cr6502::Opcodes::ROR
 
   @[OpCode(
     h: 0x66, m: "zeropage", len: 2, cycles: 5)]
-  def ror_zeropage : Nil
+  def ror_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x76, m: "zeropagex", len: 2, cycles: 6)]
-  def ror_zeropagex : Nil
+  def ror_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x6E, m: "absolute", len: 3, cycles: 6)]
-  def ror_absolute : Nil
+  def ror_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x7E, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def ror_absolutex : Nil
+  def ror_absolutex(arg) : Nil
   end
 end

@@ -10,6 +10,6 @@ module Cr6502::Opcodes::JSR
   
   @[OpCode(
     h: 0x20, m: "absolute", len: 3, cycles: 6, jump: true)]
-  def jsr_absolute : Nil
+  def jsr_absolute(arg) : Nil
   end
 end

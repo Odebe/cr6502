@@ -11,16 +11,16 @@ module Cr6502::Opcodes::STY
 
   @[OpCode(
     h: 0x84, m: "zeropage", len: 2, cycles: 3)]
-  def sty_zeropage: Nil
+  def sty_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x94, m: "zeropagey", len: 2, cycles: 4)]
-  def sty_zeropagey : Nil
+  def sty_zeropagey(arg) : Nil
   end
 
   @[OpCode(
     h: 0x8C, m: "absolute", len: 3, cycles: 4)]
-  def sty_absolute : Nil
+  def sty_absolute(arg) : Nil
   end
 end

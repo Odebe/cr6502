@@ -18,21 +18,21 @@ module Cr6502::Opcodes::ROL
 
   @[OpCode(
     h: 0x26, m: "zeropage", len: 2, cycles: 5)]
-  def rol_zeropage : Nil
+  def rol_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x36, m: "zeropagex", len: 2, cycles: 6)]
-  def rol_zeropagex : Nil
+  def rol_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x2E, m: "absolute", len: 3, cycles: 6)]
-  def rol_absolute : Nil
+  def rol_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x3E, m: "absolutex", len: 3, cycles: 7)]
-  def rol_absolutex : Nil
+  def rol_absolutex(arg) : Nil
   end
 end

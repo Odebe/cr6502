@@ -17,41 +17,41 @@ module Cr6502::Opcodes::ADC
 
   @[OpCode(
     h: 0x69, m: "immidiate", len: 2, cycles: 2)]
-  def adc_immidiate : Nil
+  def adc_immidiate(arg): Nil
   end
 
   @[OpCode(
     h: 0x65, m: "zeropage", len: 2, cycles: 3)]
-  def adc_zeropage : Nil
+  def adc_zeropage(arg): Nil
   end
 
   @[OpCode(
     h: 0x75, m: "zeropagex", len: 2, cycles: 4)]
-  def adc_zeropagex : Nil
+  def adc_zeropagex(arg): Nil
   end
 
   @[OpCode(
     h: 0x6D, m: "absolute", len: 3, cycles: 4)]
-  def adc_absolute : Nil
+  def adc_absolute(arg): Nil
   end
 
   @[OpCode(
     h: 0x7D, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def adc_absolutex : Nil
+  def adc_absolutex(arg): Nil
   end
 
   @[OpCode(
     h: 0x79, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def adc_absolutey : Nil
+  def adc_absolutey(arg): Nil
   end
 
   @[OpCode(
     h: 0x61, m: "indirectx", len: 2, cycles: 6, ex: 1)]
-  def adc_indirectx : Nil
+  def adc_indirectx(arg): Nil
   end
 
   @[OpCode(
     h: 0x71, m: "indirecty", len: 2, cycles: 5, ex: 1)]
-  def adc_indirecty : Nil
+  def adc_indirecty(arg): Nil
   end
 end

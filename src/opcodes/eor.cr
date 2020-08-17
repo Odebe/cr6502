@@ -18,41 +18,41 @@ module Cr6502::Opcodes::EOR
 
   @[OpCode(
     h: 0x49, m: "immidiate", len: 2, cycles: 2)]
-  def eor_immidiate : Nil
+  def eor_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0x45, m: "zeropage", len: 2, cycles: 3)]
-  def eor_zeropage : Nil
+  def eor_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x55, m: "zeropagex", len: 2, cycles: 4)]
-  def eor_zeropagex : Nil
+  def eor_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x4D, m: "absolute", len: 3, cycles: 4)]
-  def eor_absolute : Nil
+  def eor_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x5D, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def eor_absolutex : Nil
+  def eor_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x59, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def eor_absolutey: Nil
+  def eor_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0x41, m: "indirectx", len: 2, cycles: 6)]
-  def eor_indirectx: Nil
+  def eor_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0x51, m: "indirecty", len: 2, cycles: 5, ex: 1)]
-  def eor_indirecty: Nil
+  def eor_indirecty(arg) : Nil
   end
 end

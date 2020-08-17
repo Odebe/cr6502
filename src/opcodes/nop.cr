@@ -10,6 +10,6 @@ module Cr6502::Opcodes::NOP
 
   @[OpCode(
     h: 0xEA, m: "implied", len: 1, cycles: 2)]
-  def nop_implied : Nil
+  def nop_implied: Nil
   end
 end

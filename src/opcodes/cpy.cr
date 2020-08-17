@@ -12,16 +12,16 @@ module Cr6502::Opcodes::CPY
 
   @[OpCode(
     h: 0xC0, m: "immediate", len: 2, cycles: 2)]
-  def cpy_immediate : Nil
+  def cpy_immediate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xC4, m: "zeropage", len: 2, cycles: 3)]
-  def cpy_zeropage : Nil
+  def cpy_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xCC, m: "absolute", len: 3, cycles: 4)]
-  def cpy_absolute : Nil
+  def cpy_absolute(arg) : Nil
   end
 end

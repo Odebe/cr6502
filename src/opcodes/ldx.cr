@@ -14,26 +14,26 @@ module Cr6502::Opcodes::LDX
 
   @[OpCode(
     h: 0xA2, m: "immidiate", len: 2, cycles: 2)]
-  def ldx_immidiate : Nil
+  def ldx_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xA6, m: "zeropage", len: 2, cycles: 3)]
-  def ldx_zeropage : Nil
+  def ldx_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xB6, m: "zeropagex", len: 2, cycles: 4)]
-  def ldx_zeropagex : Nil
+  def ldx_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xAe, m: "absolute", len: 3, cycles: 4)]
-  def ldx_absolute : Nil
+  def ldx_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xBE, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def ldx_absolutey: Nil
+  def ldx_absolutey(arg) : Nil
   end
 end

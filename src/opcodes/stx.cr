@@ -12,17 +12,17 @@ module Cr6502::Opcodes::STX
   
   @[OpCode(
     h: 0x86, m: "zeropage", len: 2, cycles: 3)]
-  def stx_zeropage: Nil
+  def stx_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x96, m: "zeropagey", len: 2, cycles: 4)]
-  def stx_zeropagey : Nil
+  def stx_zeropagey(arg) : Nil
   end
 
   @[OpCode(
     h: 0x8E, m: "absolute", len: 3, cycles: 4)]
-  def stx_absolute : Nil
+  def stx_absolute(arg) : Nil
   end
 end
 

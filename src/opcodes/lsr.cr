@@ -19,21 +19,21 @@ module Cr6502::Opcodes::LSR
 
   @[OpCode(
     h: 0x46, m: "zeropage", len: 2, cycles: 5)]
-  def lsr_zeropage : Nil
+  def lsr_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0x56, m: "zeropagex", len: 2, cycles: 6)]
-  def lsr_zeropagex : Nil
+  def lsr_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0x4E, m: "absolute", len: 3, cycles: 6)]
-  def lsr_absolute : Nil
+  def lsr_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0x5E, m: "absolutex", len: 3, cycles: 7)]
-  def lsr_absolutex : Nil
+  def lsr_absolutex(arg) : Nil
   end
 end

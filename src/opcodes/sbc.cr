@@ -17,41 +17,41 @@ module Cr6502::Opcodes::SBC
 
   @[OpCode(
     h: 0xE9, m: "immidiate", len: 2, cycles: 2)]
-  def sbc_immidiate : Nil
+  def sbc_immidiate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xE5, m: "zeropage", len: 2, cycles: 3)]
-  def sbc_zeropage : Nil
+  def sbc_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xF5, m: "zeropagex", len: 2, cycles: 4)]
-  def sbc_zeropagex : Nil
+  def sbc_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xED, m: "absolute", len: 3, cycles: 4)]
-  def sbc_absolute : Nil
+  def sbc_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xFD, m: "absolutex", len: 3, cycles: 4, ex: 1)]
-  def sbc_absolutex : Nil
+  def sbc_absolutex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xF9, m: "absolutey", len: 3, cycles: 4, ex: 1)]
-  def sbc_absolutey: Nil
+  def sbc_absolutey(arg) : Nil
   end
 
   @[OpCode(
     h: 0xE1, m: "indirectx", len: 2, cycles: 6)]
-  def sbc_indirectx: Nil
+  def sbc_indirectx(arg) : Nil
   end
 
   @[OpCode(
     h: 0xF1, m: "indirecty", len: 2, cycles: 5, ex: 1)]
-  def sbc_indirecty: Nil
+  def sbc_indirecty(arg) : Nil
   end
 end

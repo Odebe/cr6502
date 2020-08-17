@@ -11,21 +11,21 @@ module Cr6502::Opcodes::INC
 
   @[OpCode(
     h: 0xE6, m: "zeropage", len: 2, cycles: 5)]
-  def inc_zeropage : Nil
+  def inc_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xF6, m: "zeropagex", len: 2, cycles: 6)]
-  def inc_zeropagex : Nil
+  def inc_zeropagex(arg) : Nil
   end
 
   @[OpCode(
     h: 0xEE, m: "absolute", len: 3, cycles: 6)]
-  def inc_absolute : Nil
+  def inc_absolute(arg) : Nil
   end
 
   @[OpCode(
     h: 0xFE, m: "absolutex", len: 3, cycles: 7)]
-  def inc_absolutex : Nil
+  def inc_absolutex(arg) : Nil
   end
 end

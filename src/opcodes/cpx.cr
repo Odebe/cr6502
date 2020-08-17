@@ -14,16 +14,16 @@ module Cr6502::Opcodes::CPX
 
   @[OpCode(
     h: 0xE0, m: "immediate", len: 2, cycles: 2)]
-  def cpx_immediate : Nil
+  def cpx_immediate(arg) : Nil
   end
 
   @[OpCode(
     h: 0xE4, m: "zeropage", len: 2, cycles: 3)]
-  def cpx_zeropage : Nil
+  def cpx_zeropage(arg) : Nil
   end
 
   @[OpCode(
     h: 0xEC, m: "absolute", len: 3, cycles: 4)]
-  def cpx_absolute : Nil
+  def cpx_absolute(arg) : Nil
   end
 end
