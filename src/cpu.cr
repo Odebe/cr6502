@@ -1,23 +1,31 @@
 require "./annotations.cr"
 require "./instructions.cr"
-require "./memory_utils.cr"
+require "./flags.cr"
 
-# require "./opcodes/*"
+require "./memory_utils.cr"
+require "./flags_utils.cr"
 
 class Cr6502::CPU
+  include Cr6502::FlagsUtils
   include Cr6502::MemoryUtils
   include Cr6502::Instructions
 
+  property accumulator
+  getter registers
+
   def initialize(@memory : Array(UInt8), @start : UInt16)
     @pc = @start
-
-    @acc = 0_u8
-    @status = { negative: 0, overflow: 0, brk: 0, decimal: 0, interrupt: 0, zero: 0, carry: 0 }
-    @registers = { x: 0_u8, y: 0_u8 }
+    @sp = 255_u8
+    @accumulator = 0_u8
+    @flags = Flags.new 
+    
+    @registers = Hash(Symbol, UInt8).new
+    @registers[:x] = 0_u8
+    @registers[:y] = 0_u8
   end
 
   def running?
-    @memory[@pc + 1]?
+    @memory[@pc.to_u32 + 1]?
   end
 
   def cycle!
@@ -25,42 +33,36 @@ class Cr6502::CPU
     exec opcode
   end
 
-  macro puk
+  macro finished
     {% def_modules = @type.ancestors.select { |a| a.annotation(Cr6502::A::DefinitionModule) } %}
     def exec(opcode)
-      {% opcodes = 0 %}
-      {% methods = 0 %}
       case opcode
       {% begin %}
         {% for def_mod in def_modules %}
           {% for def_met in def_mod.methods.select { |m| m.annotation(Cr6502::A::Realization) } %}
             {% realization_a = def_met.annotation(Cr6502::A::Realization) %}
-            {% methods += 1 %}
             {% for hex, data in realization_a[:for] %}
               when {{ hex }}
-                {% opcodes += 1 %}
                 {% if data[:len] == 1 %}
-                  puts "#{@pc}, #{ {{ realization_a[:name] }} }, #{opcode}"
-                  # {{ def_met.name.id }}
+                  puts "[#{@pc.to_s(16)}], #{ {{ realization_a[:name] }} }, code: #{opcode.to_s(16)}, [a: #{accumulator.to_s(16)}, x: #{registers[:x].to_s(16)}, y: #{registers[:y].to_s(16)}], [sp: #{@sp}, v: #{stack_peek.to_s(16)}] [#{@flags.to_s}]"
+                  {{ def_met.name.id }}
                 {% else %}
-                  addr = find_addr_for({{ data[:m] }})
-                  puts "#{@pc}, #{ {{ realization_a[:name] }} }, #{opcode}, addr: #{addr}, mem: #{@memory[addr]}"
-                  # {{ def_met.name.id }}(%addr)
+                  %mem = read_addr_for({{ data[:m] }})
+                  puts "[#{@pc.to_s(16)}], #{ {{ realization_a[:name] }} }, code: #{opcode.to_s(16)}, addr: #{%mem.to_s(16)}, [a: #{accumulator.to_s(16)}, x: #{registers[:x].to_s(16)}, y: #{registers[:y].to_s(16)}],  [sp: #{@sp}, v: #{stack_peek.to_s(16)}] [#{@flags.to_s}]"
+                  {{ def_met.name.id }}(%mem)
                 {% end %}
 
-                @pc += {{ data[:len] }}
+                {% unless data[:br] %}
+                  @pc += {{ data[:len] }}
+                {% end %}
             {% end %}
           {% end %}
         {% end %}
       {% end %}
       else
-        puts "[#{@pc.to_s(16)}] ignoring #{opcode.to_s(16)}"
+        raise "invalid opcode: #{opcode.to_s(16)} at [#{@pc.to_s(16)}]"
         @pc += 1
       end
-      puts "opcodes count {{ opcodes }}"
-      puts "opcodes count {{ methods }} / 56"
     end
   end
 end
-
-Cr6502::CPU.puk

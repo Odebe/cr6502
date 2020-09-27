@@ -1,5 +1,5 @@
 module Cr6502::A
-  annotation OpCode
+  annotation Realization
   end
 
   annotation DefinitionModule

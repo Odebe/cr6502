@@ -7,29 +7,24 @@ module Cr6502
   # TODO: Put your code here
 end
 
-rom = "cpu_dummy_reads.nes"
+rom = "nestest.nes"
+# rom = "cpu_dummy_reads.nes"
+start = 0xC000_u16
+
+memory = Array(UInt8).new(0x10000, 0)
 
 file = File.open(rom)
-memory = Array(UInt8).new(0xFFFF, 0)
-starts = [0x0000_u16]
+file.seek(0x0010, IO::Seek::Set)
 
-(0...file.size).each do |i|
-  value = file.read_bytes(UInt8, IO::ByteFormat::BigEndian)
-  starts.each do |s|
-    memory[i + s] = value
-  end
+(0x4000 - 1).times do |i|
+  value = file.read_bytes(UInt8, IO::ByteFormat::LittleEndian)
+  
+  memory[i + 0x8000_u16] = value
+  memory[i + 0xC000_u16] = value
 end
 
-# ram.Write(0x8000, romData);
-# ram.Write(0xC000, romData);
-
-cpu = Cr6502::CPU.new(memory, start: 0x6000)
+cpu = Cr6502::CPU.new(memory, start: start)
 
 while cpu.running?
   cpu.cycle!
 end
-
-# Cr6502::CPU.puk
-# Cr6502::CPU.new.exec(0x69)
-
- 
